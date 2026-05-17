@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const handle = 'jazzhorse89';
+const geocachingUrl = 'https://www.geocaching.com/p/?code=PR15M8EK';
+---
+
+<BaseLayout
+  title={handle}
+  description={`${handle} — Knightscaching crew member profile and geocaching stats.`}
+>
+  <section class="cacher-hero" aria-label="Cacher profile hero">
+    <div class="cacher-hero-topo" aria-hidden="true"></div>
+    <div class="cacher-hero-fade" aria-hidden="true"></div>
+    <div class="cacher-hero-inner">
+      <a href="/" class="cacher-back">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M10 6H2M5 9L2 6l3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        All Cachers
+      </a>
+      <p class="cacher-hero-eyebrow">
+        <span class="cacher-hero-eyebrow-line" aria-hidden="true"></span>
+        Knightscaching
+      </p>
+      <h1 class="cacher-hero-handle">{handle}</h1>
+    </div>
+  </section>
+
+  <section class="profile-section" aria-labelledby="bio-heading">
+    <div class="container">
+      <div class="profile-grid">
+        <div class="profile-photo-wrap">
+          <img src="/assets/images/jazzhorse89.jpg" alt={handle} class="profile-photo-img" />
+        </div>
+        <div class="profile-bio">
+          <p class="profile-bio-eyebrow">About</p>
+          <h2 class="profile-bio-name" id="bio-heading">{handle}</h2>
+          <a href={geocachingUrl} class="geocaching-btn" target="_blank" rel="noopener noreferrer">
+            View Geocaching Profile
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="stats-embed">
+        <a href="https://project-gc.com/ProfileStats/jazzhorse89" target="_top">
+          <img src="https://project-gc.com/ProfileStats/jazzhorse89" width="750" alt="jazzhorse89 geocaching stats" />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

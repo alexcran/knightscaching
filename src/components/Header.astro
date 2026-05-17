@@ -1,0 +1,65 @@
+---
+const cachers = [
+  { handle: 'alexcran421',          href: '/alexcran421' },
+  { handle: 'ATTweedleDum',         href: '/ATTweedleDum' },
+  { handle: 'jazzhorse89',          href: '/jazzhorse89' },
+  { handle: 'bosoxfansinnewjersey', href: '/bosoxfansinnewjersey' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a href="/" class="header-logo" aria-label="Knightscaching home">
+    <img src="/logo.svg" class="header-logo-mark" alt="" aria-hidden="true" width="32" height="32" />
+    Knightscaching
+  </a>
+
+  <nav class="header-nav" id="main-nav" aria-label="Primary navigation">
+    <a href="/" class="header-nav-link" data-active={currentPath === '/' || undefined}>
+      Home
+    </a>
+    {cachers.map((c) => (
+      <a
+        href={c.href}
+        class="header-nav-link"
+        data-active={currentPath === c.href || undefined}
+      >
+        {c.handle}
+      </a>
+    ))}
+  </nav>
+
+  <button
+    class="header-menu-btn"
+    id="menu-toggle"
+    aria-controls="main-nav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span id="menu-label">Menu</span>
+  </button>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle')!;
+  const nav = document.getElementById('main-nav')!;
+  const label = document.getElementById('menu-label')!;
+
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? 'Close' : 'Menu';
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  // Close on nav link click (mobile)
+  nav.querySelectorAll('.header-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+      label.textContent = 'Menu';
+      document.body.style.overflow = '';
+    });
+  });
+</script>

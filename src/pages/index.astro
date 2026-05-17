@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CacherCard from '../components/CacherCard.astro';
+
+const cachers = [
+  { handle: 'alexcran421',          href: '/alexcran421' },
+  { handle: 'ATTweedleDum',         href: '/ATTweedleDum' },
+  { handle: 'jazzhorse89',          href: '/jazzhorse89' },
+  { handle: 'bosoxfansinnewjersey', href: '/bosoxfansinnewjersey' },
+];
+---
+
+<BaseLayout title="Home">
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Site hero">
+    <div class="hero-topo" aria-hidden="true"></div>
+    <div class="hero-vignette" aria-hidden="true"></div>
+
+    <div class="hero-content container">
+      <img src="/logo.svg" class="hero-logo" alt="Knightscaching" />
+      <h1 class="hero-title">Knightscaching</h1>
+      <p class="hero-est">Est. 2021</p>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll-label">Scroll</span>
+      <span class="hero-scroll-bar"></span>
+    </div>
+  </section>
+
+  <!-- ── GROUP PHOTO ── -->
+  <section class="group-photo-section" aria-label="The Knightscaching crew">
+    <div class="group-photo-wrap">
+      <img
+        src="/assets/images/knightscaching.jpg"
+        alt="The Knightscaching crew"
+        class="group-photo"
+      />
+      <div class="group-photo-overlay" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ── THE CREW ── -->
+  <section class="crew-section" aria-labelledby="crew-heading">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">
+          <span class="section-eyebrow-line" aria-hidden="true"></span>
+          The Crew
+        </p>
+        <h2 class="section-title" id="crew-heading">Meet the Cachers</h2>
+        <p class="section-subtitle">
+          Four handles. Hundreds of miles of trail. Thousands of caches between us.
+          Click through to see each cacher's full profile and stats.
+        </p>
+      </div>
+
+      <div class="crew-grid">
+        {cachers.map((c) => (
+          <CacherCard
+            handle={c.handle}
+            href={c.href}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
